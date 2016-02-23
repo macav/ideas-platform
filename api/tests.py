@@ -78,3 +78,17 @@ class TestAPI(TestCase):
         del data['user']
         response = self.client.post('/ideas/', data)
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
+
+    def test_should_upvote_idea(self):
+        id = self.ideas[0].pk
+        original = Idea.objects.get(pk=id)
+        response = self.client.post('/ideas/'+str(id)+'/upvote', {})
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(Idea.objects.get(pk=id).upvotes, original.upvotes+1)
+
+    def test_should_downvote_idea(self):
+        id = self.ideas[0].pk
+        original = Idea.objects.get(pk=id)
+        response = self.client.post('/ideas/'+str(id)+'/downvote', {})
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(Idea.objects.get(pk=id).downvotes, original.downvotes+1)
