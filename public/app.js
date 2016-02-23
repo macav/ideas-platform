@@ -5,7 +5,9 @@
     'ngRoute',
     'renuo.ideas.dashboard'
   ]).
-  config(['$routeProvider', function($routeProvider) {
+  config(['$routeProvider', '$httpProvider', function($routeProvider, $httpProvider) {
     $routeProvider.otherwise({redirectTo: '/'});
+    $httpProvider.defaults.xsrfCookieName = 'csrftoken';
+    $httpProvider.defaults.xsrfHeaderName = 'X-CSRFToken';
   }]);
 })();

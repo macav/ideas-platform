@@ -18,10 +18,34 @@
   <div class="row">
     <div class="col-sm-12">
       <p>
-        Logged in: {{ctrl.user.username || 'Nobody'}}
-        <a ng-if="!ctrl.user.username" href="/login/" class="btn btn-success">Login</a>
+        <span ng-if="ctrl.user.username">Logged in: {{ctrl.user.username || 'Nobody'}}</span>
+        <a ng-if="!ctrl.user.username" href="/login/" class="btn btn-success">Login to post new ideas</a>
         <a ng-if="ctrl.user.username" href="/logout/" class="btn btn-primary">Logout</a>
       </p>
     </div>
+  </div>
+  <div class="row" ng-if="ctrl.user.username">
+    <div class="col-sm-12">
+      <h3 class="text-primary">New idea</h3>
+    </div>
+    <form ng-submit="ctrl.postIdea()" class="form-horizontal">
+      <div class="form-group">
+        <label class="col-sm-2 control-label">Title: </label>
+        <div class="col-xs-4">
+          <input class="form-control" type="text" ng-model="ctrl.newIdea.title">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-2 control-label">Content: </label>
+        <div class="col-xs-4">
+          <textarea class="form-control" ng-model="ctrl.newIdea.content"></textarea>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+          <button type="submit" class="btn btn-success">Submit</button>
+        </div>
+      </div>
+    </form>
   </div>
 </div>

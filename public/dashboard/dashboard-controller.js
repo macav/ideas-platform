@@ -2,8 +2,15 @@
   'use strict';
 
   function DashboardCtrl(ideas, IdeaService, DjangoAuthUser) {
+    var self = this;
     this.ideas = ideas.data;
     this.user = DjangoAuthUser;
+    this.postIdea = function() {
+      IdeaService.post(angular.extend(this.newIdea, {user: this.user.id})).then(function(response) {
+        self.ideas.push(response.data);
+        delete self.newIdea;
+      });
+    };
     this.upvote = function(idea) {
       IdeaService.upvote(idea).then(function(response) {
         angular.extend(idea, response.data);
