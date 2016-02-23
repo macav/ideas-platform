@@ -8,8 +8,8 @@ module.exports = function(config){
       'vendor/angular-route/angular-route.js',
       'vendor/angular-mocks/angular-mocks.js',
       'public/mocks/django-auth-mock_test.js',
-      'public/components/**/*.js',
-      'public/view*/**/*.js'
+      'public/**/*.module.js',
+      'public/**/*.js'
     ],
 
     autoWatch : true,

@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <h1 class="text-primary">Dashboard for ideas</h1>
+
+      <div class="list-group ideas">
+        <a ng-click="ideaDetail(idea)" ng-repeat="idea in ctrl.ideas" class="list-group-item">
+          <h4 class="list-group-item-heading">{{idea.title}}</h4>
+          <p class="list-group-item-text">{{idea.content}}</p>
+          <div class="pull-right controls">
+            <button class="btn btn-xs btn-primary" ng-click="ctrl.upvote(idea)">{{idea.upvotes}} Up</button>
+            <button class="btn btn-xs btn-danger" ng-click="ctrl.downvote(idea)">{{idea.downvotes}} Down</button>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12">
+      <p>
+        Logged in: {{ctrl.user.username || 'Nobody'}}
+        <a ng-if="!ctrl.user.username" href="/login/" class="btn btn-success">Login</a>
+        <a ng-if="ctrl.user.username" href="/logout/" class="btn btn-primary">Logout</a>
+      </p>
+    </div>
+  </div>
+</div>

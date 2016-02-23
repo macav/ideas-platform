@@ -1,4 +1,4 @@
-from django.conf.urls import url
+from django.conf.urls import url, include
 from ideas import settings
 
 from . import views
@@ -10,6 +10,10 @@ template_name = {'template_name': 'api/login.html',
 
 urlpatterns = [
     url(r'^$', views.IndexView.as_view(), name='index'),
+    url(r'^ideas/$', views.IdeaList.as_view(), name='idea-list'),
+    url(r'^ideas/(?P<pk>[0-9]+)$', views.IdeaDetail.as_view(), name='idea-detail'),
+    url(r'^ideas/(?P<pk>[0-9]+)/upvote$', views.IdeaUpvote.as_view(), name='idea-upvote'),
+    url(r'^ideas/(?P<pk>[0-9]+)/downvote$', views.IdeaDownvote.as_view(), name='idea-downvote'),
     url(r'^login/$', auth_views.login, template_name, name='login'),
     url(r'^logout/$', auth_views.logout, template_name, name='logout'),
 ]
