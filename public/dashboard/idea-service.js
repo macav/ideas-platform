@@ -17,7 +17,7 @@
       downvote: function(idea) {
         return $http.post(_endpoint+idea.id+'/downvote', {});
       }
-    }
+    };
   }
   IdeaService.$inject = ['$http'];
 

@@ -31,7 +31,7 @@ var paths = {
     distProd: distPath,
     distScriptsProd: distPath
 };
-var appName = 'myApp';
+var appName = 'renuo.ideas';
 
 // == PIPE SEGMENTS ========
 
@@ -297,7 +297,7 @@ gulp.task('watch', ['validate-app-scripts'], function() {
     gulp.watch(paths.sassStyles, ['build-sass']);
 });
 
-gulp.task('validate', ['validate-partials', 'validate-index', 'validate-app-scripts'])
+gulp.task('validate', ['validate-partials', 'validate-app-scripts'])
 
 gulp.task('build-sass', pipes.buildSass);
 gulp.task('watch-sass', function() {

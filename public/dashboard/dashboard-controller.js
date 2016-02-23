@@ -15,12 +15,12 @@
       IdeaService.upvote(idea).then(function(response) {
         angular.extend(idea, response.data);
       });
-    }
+    };
     this.downvote = function(idea) {
       IdeaService.downvote(idea).then(function(response) {
         angular.extend(idea, response.data);
       });
-    }
+    };
   }
   DashboardCtrl.$inject = ['ideas', 'IdeaService', 'DjangoAuthUser'];
   DashboardCtrl.resolve = {
