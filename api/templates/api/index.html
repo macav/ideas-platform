@@ -1,0 +1,30 @@
+{% extends "api/base.html" %}
+
+{% load static %}
+
+{% block content %}
+<div ng-view></div>
+{% endblock %}
+
+{% block scripts %}
+
+{% if is_debug %}
+  <script src="{% static 'html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js' %}"></script>
+  <script src="{% static 'angular/angular.js' %}"></script>
+  <script src="{% static 'angular-route/angular-route.js' %}"></script>
+
+  <script src="{% static 'app.js' %}"></script>
+  <script src="{% static 'view1/view1.js' %}"></script>
+  <script src="{% static 'view2/view2.js' %}"></script>
+{% else %}
+  <script src="{% static 'vendor.min.js' %}"></script>
+  <script src="{% static 'app.min.js' %}"></script>
+{% endif %}
+<script>
+    {% if is_authenticated %}
+    angular.module('{{ngapp}}.djangoAuth', []).constant('DjangoAuthUser', {{user | safe}});
+    {% else %}
+    angular.module('{{ngapp}}.djangoAuth', []).constant('DjangoAuthUser', {});
+    {% endif %}
+</script>
+{% endblock %}

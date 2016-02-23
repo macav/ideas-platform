@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html lang="en" ng-app="{{ngapp}}" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="en" ng-app="{{ngapp}}" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="en" ng-app="{{ngapp}}" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en" ng-app="{{ngapp}}" class="no-js"> <!--<![endif]-->
+<head>
+  {% load static %}
+  {% load i18n %}
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>{% block title %}Ideas Platform{% endblock %}</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  {% if is_debug %}
+  <link rel="stylesheet" href="{% static 'html5-boilerplate/dist/css/normalize.css' %}">
+  <link rel="stylesheet" href="{% static 'html5-boilerplate/dist/css/main.css' %}">
+
+  <link rel="stylesheet" href="{% static 'styles/app.css' %}">
+  {% else %}
+  <link rel="stylesheet" href="{% static 'vendor.min.css' %}">
+  <link rel="stylesheet" href="{% static 'app.min.css' %}">
+  {% endif %}
+</head>
+<body>
+  {% block content %}{% endblock %}
+  {% block scripts %}{% endblock %}
+</body>
+</html>
